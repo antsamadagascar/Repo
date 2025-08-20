@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Résultats Baccalauréat Madagascar</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f9fc;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #0066cc;
+      color: white;
+      padding: 15px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .container {
+      margin: 30px auto;
+      max-width: 700px;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    }
+    input[type="text"] {
+      padding: 10px;
+      width: 70%;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      padding: 10px 20px;
+      background: #0066cc;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #004c99;
+    }
+    table {
+      width: 100%;
+      margin-top: 20px;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 12px;
+    }
+    th {
+      background: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+
+  <header>Résultats Baccalauréat Madagascar</header>
+
+  <div class="container">
+    <h3>Recherche par matricule</h3>
+    <input type="text" id="matricule" placeholder="Entrez votre matricule">
+    <button onclick="chercher()">Rechercher</button>
+
+    <div id="resultat"></div>
+  </div>
+
+  <script>
+    // Exemple de données simulées
+    const donnees = {
+      "2025A001": {
+        matricule: "2025A001",
+        nom: "RATOVONIAINA NY FANEVA",
+        cisco: "AMBOHIDRATRIMO",
+        ecole: "LYCEE PRIVE ARCADE VI",
+        serie: "A2",
+        observation: "NON ADMIS",
+        mention: "AJOURNÉ"
+      }
+      // 👉 tu peux ajouter d’autres matricules ici
+    };
+
+    function chercher() {
+      const mat = document.getElementById("matricule").value.trim();
+      const resultatDiv = document.getElementById("resultat");
+
+      if (donnees[mat]) {
+        const d = donnees[mat];
+        resultatDiv.innerHTML = `
+          <table>
+            <tr><th>Matricule</th><td>${d.matricule}</td></tr>
+            <tr><th>Nom & Prénom</th><td>${d.nom}</td></tr>
+            <tr><th>CiSCO</th><td>${d.cisco}</td></tr>
+            <tr><th>École d'origine</th><td>${d.ecole}</td></tr>
+            <tr><th>Série</th><td>${d.serie}</td></tr>
+            <tr><th>Observation</th><td>${d.observation}</td></tr>
+            <tr><th>Mention</th><td>${d.mention}</td></tr>
+          </table>
+        `;
+      } else {
+        resultatDiv.innerHTML = `<p style="color:red; margin-top:15px;">Matricule introuvable</p>`;
+      }
+    }
+  </script>
+
+</body>
+</html>
