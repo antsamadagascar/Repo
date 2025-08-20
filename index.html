@@ -6,83 +6,101 @@
   <title>Résultats Baccalauréat Madagascar</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f7f9fc;
-      text-align: center;
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      background: #f2f6fc;
       margin: 0;
       padding: 0;
     }
     header {
-      background: #0066cc;
+      background: #004080;
       color: white;
-      padding: 15px;
-      font-size: 20px;
+      padding: 18px;
+      font-size: 22px;
+      text-align: center;
       font-weight: bold;
+      letter-spacing: 1px;
     }
     .container {
-      margin: 30px auto;
-      max-width: 700px;
+      margin: 40px auto;
+      max-width: 800px;
       background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0px 3px 10px rgba(0,0,0,0.15);
+      text-align: center;
+    }
+    .search-box {
+      margin-bottom: 25px;
     }
     input[type="text"] {
       padding: 10px;
-      width: 70%;
-      border: 1px solid #ccc;
-      border-radius: 6px;
+      width: 65%;
+      font-size: 16px;
+      border: 1px solid #bbb;
+      border-radius: 5px;
     }
     button {
       padding: 10px 20px;
-      background: #0066cc;
+      background: #004080;
       color: white;
       border: none;
-      border-radius: 6px;
+      border-radius: 5px;
+      font-size: 15px;
       cursor: pointer;
+      margin-left: 10px;
     }
     button:hover {
-      background: #004c99;
+      background: #003366;
     }
     table {
       width: 100%;
       margin-top: 20px;
       border-collapse: collapse;
+      font-size: 15px;
     }
     th, td {
       border: 1px solid #ddd;
       padding: 12px;
+      text-align: left;
     }
     th {
-      background: #f2f2f2;
+      background: #f4f4f4;
+      font-weight: bold;
+      width: 30%;
+    }
+    .not-found {
+      color: red;
+      margin-top: 20px;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
 
-  <header>Résultats Baccalauréat Madagascar</header>
+  <header>RÉSULTATS BACCALAURÉAT - MADAGASCAR</header>
 
   <div class="container">
-    <h3>Recherche par matricule</h3>
-    <input type="text" id="matricule" placeholder="Entrez votre matricule">
-    <button onclick="chercher()">Rechercher</button>
+    <div class="search-box">
+      <h3>Recherche par matricule</h3>
+      <input type="text" id="matricule" placeholder="Ex : 2105422">
+      <button onclick="chercher()">Rechercher</button>
+    </div>
 
     <div id="resultat"></div>
   </div>
 
   <script>
-    // Exemple de données simulées
+    // Données simulées
     const donnees = {
-      "2105422" : {
+      "2105422": {
         matricule: "2105422",
         nom: "RATOVONIAINA NY FANEVA",
         cisco: "AMBOHIDRATRIMO",
-        ecole: "LYCEE PRIVE ARCADE VI",
+        ecole: "LYCÉE PRIVÉ ARCADE VI",
         serie: "A2",
         observation: "NON ADMIS",
         mention: "AJOURNÉ"
       }
-      // 👉 tu peux ajouter d’autres matricules ici
     };
 
     function chercher() {
@@ -103,7 +121,7 @@
           </table>
         `;
       } else {
-        resultatDiv.innerHTML = `<p style="color:red; margin-top:15px;">Matricule introuvable</p>`;
+        resultatDiv.innerHTML = `<p class="not-found">⚠️ Matricule introuvable</p>`;
       }
     }
   </script>
